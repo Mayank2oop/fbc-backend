@@ -10,17 +10,18 @@ dotenv.config();
 const app = express();
 
 
-const corsOptions = {
-    origin:process.env.FRONTEND_URL,
-    credentials:true,
-}
-app.use(cors(corsOptions))
-
 // Middleware
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors());
 
+
+
+const corsOptions = {
+    origin:process.env.FRONTEND_URL,
+    credentials:true,
+}
+app.use(cors(corsOptions))
 
 
 // Serve uploaded images statically
