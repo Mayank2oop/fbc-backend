@@ -13,8 +13,14 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser())
 app.use(cors());
 
+const corsOptions = {
+    origin:process.env.FRONTEND_URL,
+    credentials:true,
+}
+app.use(cors(corsOptions))
 
 // Serve uploaded images statically
 app.use("/uploads", express.static(path.join("uploads")));
